@@ -1,0 +1,4 @@
+JMSSerializerModule Configuration Reference
+===========================================
+
+**TODO**

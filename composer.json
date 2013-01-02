@@ -1,0 +1,46 @@
+{
+    "name": "sp/jms-serializer-module",
+    "description": "Zend Framework 2 Module that integrates the jms serializer library",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "serialize",
+        "deserialize",
+        "json",
+        "xml",
+        "jms",
+        "module",
+        "zf2"
+    ],
+    "authors": [
+        {
+            "name": "Martin Parsiegla",
+            "email": "martin.parsiegla@gmail.com",
+            "homepage": "http://speanet.info"
+        },
+        {
+            "name": "Community contributions",
+            "homepage": "https://github.com/Spea/JMSSerializerModule/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zendframework": "2.*",
+        "doctrine/doctrine-module": ">=0.5.1",
+        "jms/serializer": "1.0.*"
+    },
+    "require-dev": {
+        "zendframework/zend-developer-tools": "dev-master"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "JMSSerializerModule\\": "src/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
