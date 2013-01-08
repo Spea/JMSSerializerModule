@@ -45,6 +45,7 @@ return array(
         'JMSSerializerModule',
         // ...
     ),
+);
 ```
 
 ### Step 3: Basic usage
@@ -63,6 +64,26 @@ Access the serializer using the following alias:
 <?php
 $serializer = $this->getServiceLocator()->get('jms_serializer.serializer');
 $serializer->serialize($data, 'json');
+```
+
+If you don't use annotations for the metadata, you have to specify the path where the metadata can be found.
+This will be done in your ```module.config.php```
+
+``` php
+<?php
+// MyModule/config/module.config.php
+return array(
+    'jms_serializer' => array(
+        'metadata' => array(
+            'directories' => array(
+                'any-name' => array(
+                    'namespace_prefix' => 'MyModule\Entity',
+                    'path' => __DIR__ .'/serializer'
+                )
+            )
+        ),
+    ),
+);
 ```
 
 ### Next Steps
