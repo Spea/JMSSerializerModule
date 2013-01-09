@@ -23,7 +23,6 @@ class HandlerRegistryFactory extends AbstractFactory
         $handlerRegistry = new HandlerRegistry();
 
         foreach ($options->getSubscribers() as $subscriberName) {
-            var_dump($subscriberName);
             $subscriber = $subscriberName;
             if (is_string($subscriber)) {
                 if ($serviceLocator->has($subscriber)) {

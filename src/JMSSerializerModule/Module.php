@@ -35,6 +35,7 @@ use JMSSerializerModule\Service\FileLocatorFactory;
 use JMSSerializerModule\Service\HandlerRegistryFactory;
 use JMSSerializerModule\Service\MetadataCacheFactory;
 use JMSSerializerModule\Service\MetadataDriverFactory;
+use JMSSerializerModule\View\Serializer;
 use Metadata\Driver\DriverChain;
 use Metadata\Driver\FileLocator;
 use Metadata\MetadataFactory;
@@ -44,6 +45,7 @@ use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 use Zend\Loader\StandardAutoloader;
 use Zend\ModuleManager\Feature\ServiceProviderInterface;
+use Zend\ModuleManager\Feature\ViewHelperProviderInterface;
 use Zend\ServiceManager\ServiceManager;
 
 /**
@@ -54,7 +56,8 @@ use Zend\ServiceManager\ServiceManager;
 class Module implements
     AutoloaderProviderInterface,
     ConfigProviderInterface,
-    ServiceProviderInterface
+    ServiceProviderInterface,
+    ViewHelperProviderInterface
 {
     /**
      * {@inheritDoc}
@@ -191,6 +194,23 @@ class Module implements
                 'jms_serializer.unserialize_object_constructor' => 'JMS\Serializer\Construction\UnserializeObjectConstructor',
                 'jms_serializer.array_collection_handler' => 'JMS\Serializer\Handler\ArrayCollectionHandler',
                 'jms_serializer.doctrine_proxy_subscriber' => 'JMS\Serializer\EventDispatcher\Subscriber\DoctrineProxySubscriber',
+            ),
+        );
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getViewHelperConfig()
+    {
+        return array(
+            'factories' => array(
+                'jmsSerializer' => function ($helpers) {
+                    $sm = $helpers->getServiceLocator();
+                    $viewHelper = new Serializer($sm->get('jms_serializer.serializer'));
+
+                    return $viewHelper;
+                },
             ),
         );
     }

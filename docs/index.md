@@ -66,6 +66,17 @@ $serializer = $this->getServiceLocator()->get('jms_serializer.serializer');
 $serializer->serialize($data, 'json');
 ```
 
+Or use the integrated view helper in your templates:
+
+```php
+<?php
+echo $this->jmsSerializer($object); // will serialize to json
+echo $this->jmsSerializer($object, 'json');
+echo $this->jmsSerializer($object, 'xml');
+echo $this->jmsSerializer($object, 'yml');
+?>
+```
+
 If you don't use annotations for the metadata, you have to specify the path where the metadata can be found.
 This will be done in your ```module.config.php```
 
