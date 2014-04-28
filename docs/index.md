@@ -74,6 +74,9 @@ echo $this->jmsSerializer($object); // will serialize to json
 echo $this->jmsSerializer($object, 'json');
 echo $this->jmsSerializer($object, 'xml');
 echo $this->jmsSerializer($object, 'yml');
+
+// Adding serialization contexts
+echo $this->jmsSerializer($startup, 'json', JMS\Serializer\SerializationContext::create()->setGroups(array('group_name')));  ?>
 ?>
 ```
 
