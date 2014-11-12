@@ -61,3 +61,19 @@ return array(
     // ...
 );
 ```
+
+Selecting naming strategy
+-------------------------------
+The default naming strategy is camel case. But you can switch to the identical
+naming strategy through configuration.
+
+```php
+return array(
+    // ...
+    'jms_serializer' => array(
+      'naming_strategy' => 'identical'
+    ), ),
+        ),
+    // ...
+);
+```

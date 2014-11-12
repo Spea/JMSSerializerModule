@@ -19,6 +19,7 @@ use JMS\Serializer\JsonDeserializationVisitor;
 use JMS\Serializer\JsonSerializationVisitor;
 use JMS\Serializer\Metadata\Driver\AnnotationDriver;
 use JMS\Serializer\Naming\CamelCaseNamingStrategy;
+use JMS\Serializer\Naming\IdenticalPropertyNamingStrategy;
 use JMS\Serializer\Naming\SerializedNameAnnotationStrategy;
 use JMS\Serializer\XmlDeserializationVisitor;
 use JMS\Serializer\XmlSerializationVisitor;
@@ -155,7 +156,20 @@ class Module implements
 
                     return new CamelCaseNamingStrategy($options->getSeparator(), $options->getLowercase());
                 },
+                'jms_serializer.identical_naming_strategy' => function (ServiceManager $sm) {
+                    return new IdenticalPropertyNamingStrategy();
+                },
                 'jms_serializer.serialized_name_annotation_strategy' => function (ServiceManager $sm) {
+                    
+                    $options = $sm->get('Configuration');
+                    
+                    if (isset($options['jms_serializer']['naming_strategy'])) {
+                        
+                        if ($options['jms_serializer']['naming_strategy'] == 'identical') {
+                            return new SerializedNameAnnotationStrategy($sm->get('jms_serializer.identical_naming_strategy'));
+                        }
+                    }
+                    
                     return new SerializedNameAnnotationStrategy($sm->get('jms_serializer.camel_case_naming_strategy'));
                 },
                 'jms_serializer.naming_strategy' => 'JMSSerializerModule\Service\NamingStrategyFactory',
