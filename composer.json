@@ -1,5 +1,5 @@
 {
-    "name": "sp/jms-serializer-module",
+    "name": "unixslayer/jms-serializer-module",
     "description": "Zend Framework 2 Module that integrates the jms serializer library",
     "type": "library",
     "license": "MIT",
@@ -17,6 +17,11 @@
             "name": "Martin Parsiegla",
             "email": "martin.parsiegla@gmail.com",
             "homepage": "http://speanet.info"
+        },
+        {
+            "name": "Piotr Zając",
+            "email": "piotr.zajac@unixslayer.pl",
+            "homepage": "http://unixslayer.pl"
         },
         {
             "name": "Community contributions",
