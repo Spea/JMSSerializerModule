@@ -3,6 +3,19 @@ JMSSerializerModule
 
 Zend Framework2 integration for the [jms serializer library](https://github.com/schmittjoh/serializer)
 
+:warning: This Project Has Been Deprecated :warning:
+====================================================
+
+Thank you for your interest in contributing to this module. Unfortunately, **I
+do not plan to continue maintaining it.**
+
+The Zend Framework [is now called Laminas](https://www.zend.com/blog/evolution-zend-framework-laminas-project), and
+a lot has changed since then. Also I do not actively use this framework, which makes it kinda hard to keep it up2date.
+
+Feel free to use this module as-is, but it won't receive any updates from my side.
+
+---
+
 Documentation
 -------------
 
